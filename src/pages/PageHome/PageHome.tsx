@@ -4,17 +4,27 @@ import { UiButton } from "@components/Ui/UiButton";
 import { UiTitle } from "@components/Ui/UiTitle/UiTitle";
 import ClassName from "classnames";
 import { Helmet } from "react-helmet-async";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { CONST } from "@/consts";
+import { useActions } from "@/hooks/useAction";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { IForm } from "@/modals/forms";
 import { RouteNames } from "@/routes";
 
 import s from "./index.module.scss";
 
 const PageHome = () => {
+  const navigation = useNavigate();
   const listForm = useTypedSelector((store) => store.forms.listForm);
+  const {
+    forms: { removeForm },
+  } = useActions();
 
+  //удаляем запись
+  const handleDelete = (elem: IForm) => removeForm(elem);
+  //перейти на страницу
+  const handleGoTo = (url: string) => navigation(url);
   return (
     <>
       <Helmet>
@@ -25,17 +35,14 @@ const PageHome = () => {
         {!!listForm.length ? (
           <FormList className={s.list}>
             {listForm.map((elem, idx) => (
-              <NavLink
+              <FormListItem
                 key={elem.url}
-                to={CONST.formPath + "/" + elem.url}
-                className={s.link}
-              >
-                <FormListItem
-                  title={elem.title}
-                  subTitle={elem.url}
-                  number={idx + 1}
-                />
-              </NavLink>
+                title={elem.title}
+                subTitle={elem.url}
+                number={idx + 1}
+                onDelete={() => handleDelete(elem)}
+                onGoTo={() => handleGoTo(CONST.formPath + "/" + elem.url)}
+              />
             ))}
           </FormList>
         ) : (

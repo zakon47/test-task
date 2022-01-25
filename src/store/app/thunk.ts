@@ -11,7 +11,6 @@ export const initialApp = (initData: { init: boolean; userName: string }) => {
 
     //если были сохранённые формы - загружаем их из стора
     const localData = localStorage.getItem(CONST.localStorage.formDataKey);
-    console.log(3332, localData);
     if (!!localData) {
       const d: IForm[] = JSON.parse(localData);
       dispatch(actionCreators.forms.setForm(d));

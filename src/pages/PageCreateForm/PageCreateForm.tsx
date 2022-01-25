@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
+import { CONST } from "@/consts";
 import { useActions } from "@/hooks/useAction";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { RouteNames } from "@/routes";
@@ -25,11 +26,12 @@ const PageCreateForm = () => {
   } = useActions();
   const listForm = useTypedSelector((store) => store.forms.listForm);
   const onSubmit = (d) => {
+    const url = createUrl(d.title);
     addForm({
       title: d.title,
-      url: createUrl(d.title),
+      url,
     });
-    navigation(RouteNames.home.path);
+    navigation(CONST.formPath + "/" + url);
   };
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -50,12 +52,13 @@ const PageCreateForm = () => {
       <Helmet>
         <title>Создать новую форму</title>
       </Helmet>
-      <UiTitle>Создать новую форму</UiTitle>
+      <UiTitle to={RouteNames.home.path} label="< К списку">
+        Создать новую форму
+      </UiTitle>
       <Formik
         onSubmit={onSubmit}
         validationSchema={validationSchema}
         initialValues={initialValues as typeof initialValues}
-        enableReinitialize={true}
       >
         {({ dirty, isValid, values }: FormikProps<typeof initialValues>) => (
           <Form>
@@ -69,7 +72,7 @@ const PageCreateForm = () => {
               <UiInput
                 name="title"
                 label="Название:"
-                placeholder={"Например, форма фхода"}
+                placeholder={'Например, "форма входа"'}
               />
             </div>
             <div>

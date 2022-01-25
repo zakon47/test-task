@@ -16,7 +16,7 @@ interface IProps
 const UiInput: FC<IProps> = (props) => {
   const [field, meta] = useField(props);
   const { label, className, ...rest } = props;
-  const err = meta.error && meta.touched;
+  const err = meta.error; // && meta.touched;
   return (
     <label className={ClassName(s.wrap, className)}>
       <div className={ClassName(s.content, { [s.contentError]: err })}>

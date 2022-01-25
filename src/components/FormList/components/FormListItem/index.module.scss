@@ -6,8 +6,35 @@
   background: #eee;
   cursor: pointer;
   display: flex;
+  transition: .2s;
   &:hover{
     background: #ddd;
+    .delete {
+      opacity: 1;
+    }
+  }
+}
+.delete{
+  transition: .2s;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  & button{
+    overflow: hidden;
+    min-width: 100%;
+    padding: 0;
+    height: 100%;
+    border-radius: 0;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
   }
 }
 .left{

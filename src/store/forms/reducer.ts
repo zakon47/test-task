@@ -6,16 +6,7 @@ interface InitialState {
   listForm: IForm[];
 }
 const initialState: InitialState = {
-  listForm: [
-    {
-      title: "test",
-      url: "dsd2222d-222",
-    },
-    {
-      title: "test2",
-      url: "dsd2222d-2223",
-    },
-  ],
+  listForm: [],
 };
 
 const slice = createSlice({
