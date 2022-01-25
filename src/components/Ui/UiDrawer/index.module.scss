@@ -12,6 +12,7 @@ $width: 300px;
   box-sizing: border-box;
   background: var(--primaryContrast);
   z-index: 100;
+  box-shadow: 0 0 5px rgb(0, 0, 0, .1);
 }
 .isOpen{
   transform: translateX(-$width);

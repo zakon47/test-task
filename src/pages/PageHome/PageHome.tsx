@@ -1,7 +1,8 @@
+import { FormList } from "@components/FormList";
+import { FormListItem } from "@components/FormList/components/FormListItem";
 import { UiButton } from "@components/Ui/UiButton";
 import { UiTitle } from "@components/Ui/UiTitle/UiTitle";
 import ClassName from "classnames";
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
 
@@ -13,7 +14,6 @@ import s from "./index.module.scss";
 
 const PageHome = () => {
   const listForm = useTypedSelector((store) => store.forms.listForm);
-  const [count, setCount] = useState(10);
 
   return (
     <>
@@ -23,13 +23,21 @@ const PageHome = () => {
       <div className={s.wrap}>
         <UiTitle>Формы</UiTitle>
         {!!listForm.length ? (
-          <ul>
-            {listForm.map((elem) => (
-              <NavLink key={elem.url} to={CONST.formPath + "/" + elem.url}>
-                <li>{elem.title}</li>
+          <FormList className={s.list}>
+            {listForm.map((elem, idx) => (
+              <NavLink
+                key={elem.url}
+                to={CONST.formPath + "/" + elem.url}
+                className={s.link}
+              >
+                <FormListItem
+                  title={elem.title}
+                  subTitle={elem.url}
+                  number={idx + 1}
+                />
               </NavLink>
             ))}
-          </ul>
+          </FormList>
         ) : (
           <>
             <div className={s.empty}>

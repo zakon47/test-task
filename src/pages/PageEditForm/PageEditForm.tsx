@@ -1,4 +1,5 @@
 import { UiDrawer } from "@components/Ui/UiDrawer";
+import { UiTitle } from "@components/Ui/UiTitle";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
@@ -9,7 +10,7 @@ import s from "./index.module.scss";
 
 const PageEditForm = () => {
   const [state, setState] = useState({
-    isOpenDrawer: true,
+    isOpenDrawer: false,
   });
   const navigate = useNavigate();
   const params = useParams<{ id: string }>();
@@ -27,7 +28,7 @@ const PageEditForm = () => {
         <title>Форма: {params.id}</title>
       </Helmet>
       <>
-        <div>PageEditForm {params.id}</div>
+        <UiTitle>Форма: {params.id}</UiTitle>
         <button onClick={toggleDrawer}>TOGGLE</button>
         <UiDrawer isOpen={state.isOpenDrawer} onClose={toggleDrawer}>
           <div>11</div>

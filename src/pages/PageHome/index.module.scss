@@ -1,12 +1,17 @@
-@import "../../assets/scss/vars";
-
 .empty{
   padding: 20px 0;
   font-weight: 300;
 }
 .link{
-  text-decoration: none;
+  text-decoration: inherit;
+  color: inherit;
+  display: flex;
+  align-items: flex-end;
 }
 .addElement{
   margin-top: 20px;
+}
+.number{
+  margin-right: 10px;
+  font-size: 20px;
 }
