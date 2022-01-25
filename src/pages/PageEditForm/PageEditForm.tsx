@@ -28,7 +28,9 @@ const PageEditForm = () => {
         <title>Форма: {params.id}</title>
       </Helmet>
       <>
-        <UiTitle>Форма: {params.id}</UiTitle>
+        <UiTitle to={RouteNames.home.path} label="< К списку">
+          Форма: {params.id}
+        </UiTitle>
         <button onClick={toggleDrawer}>TOGGLE</button>
         <UiDrawer isOpen={state.isOpenDrawer} onClose={toggleDrawer}>
           <div>11</div>

@@ -60,11 +60,16 @@ const PageCreateForm = () => {
         validationSchema={validationSchema}
         initialValues={initialValues as typeof initialValues}
       >
-        {({ dirty, isValid, values }: FormikProps<typeof initialValues>) => (
+        {({
+          dirty,
+          isValid,
+          values,
+          resetForm,
+        }: FormikProps<typeof initialValues>) => (
           <Form>
             {values.title && (
               <div className={s.url}>
-                <span style={{ marginRight: 10 }}>Итоговый урл:</span>
+                <span>Сгенерированный URL адрес:</span>
                 <u>{createUrl(values.title)}</u>
               </div>
             )}
@@ -79,6 +84,15 @@ const PageCreateForm = () => {
               <UiButton type="submit" disabled={!dirty || !isValid}>
                 Создать
               </UiButton>
+              {dirty && (
+                <UiButton
+                  style={{ marginLeft: 10 }}
+                  type="submit"
+                  onClick={() => resetForm()}
+                >
+                  Сбросить
+                </UiButton>
+              )}
             </div>
           </Form>
         )}
