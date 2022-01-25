@@ -1,10 +1,17 @@
-export enum IElementMainType {
+// ЗАГОТОВКА - файл с типами элементов
+
+//=================================== CHECKBOX
+//=================================== BUTTON
+//=================================== INPUT
+//=================================== TEXTAREA
+//=================================== SELECT
+enum IElementMainType {
   input,
   textarea,
   checkbox,
   button,
 }
-export enum IButtonElementType {
+enum IButtonElementType {
   submit,
   button,
   reset,

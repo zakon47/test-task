@@ -10,3 +10,9 @@
   border-radius: 7px;
   box-shadow: 0 0 5px rgb(0, 0, 0, .1);
 }
+
+@media (max-width: 620px) {
+  .wrap{
+    padding: 15px;
+  }
+}

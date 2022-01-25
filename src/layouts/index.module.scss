@@ -5,7 +5,13 @@
   background: #eee;
 }
 .content{
-  padding: 15px 0;
+  padding: 15px;
   height: 100%;
   flex: 1 1 auto;
+}
+
+@media (max-width: 620px) {
+  .content {
+    padding: 10px;
+  }
 }
