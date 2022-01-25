@@ -31,7 +31,28 @@ const PageEditForm = () => {
         <UiTitle to={RouteNames.home.path} label="< К списку">
           Форма: {params.id}
         </UiTitle>
-        <button onClick={toggleDrawer}>TOGGLE</button>
+        <div>
+          <div>
+            <button type="submit">Кнопка</button>
+          </div>
+          <div>
+            <textarea placeholder="Проверка" />
+          </div>
+          <div>
+            <input placeholder="введите имя" />
+          </div>
+          <div>
+            <input type="email" checked />
+          </div>
+          <div>
+            <select value="name1">
+              <option value="name">name</option>
+              <option value="name1">name1</option>
+              <option value="name2">name2</option>
+            </select>
+          </div>
+        </div>
+        {/*<button onClick={toggleDrawer}>TOGGLE</button>*/}
         <UiDrawer isOpen={state.isOpenDrawer} onClose={toggleDrawer}>
           <div>11</div>
           <div>22</div>
