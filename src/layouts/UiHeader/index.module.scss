@@ -1,0 +1,28 @@
+
+.wrap{
+  background: #eee;
+  padding: 10px;
+  background: var(--primary);
+  display: flex;
+}
+.link{
+  color: var(--primaryContrast);
+  padding: 0 15px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  &:hover{
+    background: var(--secondary);
+  }
+  &:last-child{
+    margin: 0;
+  }
+}
+.activeLink{
+  background: var(--primaryActive) !important;
+}

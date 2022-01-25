@@ -1,0 +1,1 @@
+export { UiFooter } from "./UiFooter";

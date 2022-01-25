@@ -1,0 +1,28 @@
+$width: 300px;
+
+.wrap{
+  position: fixed;
+  height: 100vh;
+  width: $width;
+  top: 0;
+  bottom: 0;
+  right: -$width;
+  color: #000;
+  transition: all .1s ease-in;
+  box-sizing: border-box;
+  background: var(--primaryContrast);
+  z-index: 100;
+}
+.isOpen{
+  transform: translateX(-$width);
+}
+.close{
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1010;
+}
+.content{
+  padding: 20px;
+}
