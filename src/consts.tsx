@@ -1,3 +1,6 @@
 const formPath = "/form";
 
-export const CONST = { formPath };
+//ключи для localStorage
+const localStorage = { formDataKey: "form_data" };
+
+export const CONST = { formPath, localStorage };

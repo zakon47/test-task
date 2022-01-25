@@ -3,6 +3,7 @@ import { PageNotFound } from "@pages/PageNotFound/PageNotFound";
 import { FC, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
+import { CONST } from "@/consts";
 import { useActions } from "@/hooks/useAction";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { CommonRoutes } from "@/routes";
@@ -12,7 +13,10 @@ import s from "./index.module.scss";
 interface IProps {}
 
 const App: FC<IProps> = () => {
-  const initialApp = useTypedSelector((state) => state.app.initialApp);
+  const {
+    app: { initialApp },
+    forms: { listForm },
+  } = useTypedSelector((store) => store);
   const actions = useActions();
   useEffect(() => {
     //инициализация приложения + например, авторизация
@@ -20,6 +24,15 @@ const App: FC<IProps> = () => {
       actions.app.initialApp({ init: true, userName: "3AK" });
     }, 300);
   }, []);
+
+  useEffect(() => {
+    if (initialApp) {
+      localStorage.setItem(
+        CONST.localStorage.formDataKey,
+        JSON.stringify(listForm)
+      );
+    }
+  }, [listForm]);
   return (
     <>
       {initialApp ? (

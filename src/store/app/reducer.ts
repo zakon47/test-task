@@ -21,13 +21,9 @@ const slice = createSlice({
   name: "app",
   initialState,
   reducers: {
-    //инициализация приложения
-    initialApp(
-      state,
-      action: PayloadAction<{ init: boolean; userName: string }>
-    ) {
-      state.initialApp = action.payload.init;
-      state.authUserName = action.payload.userName;
+    //активируем приложение
+    setInitialApp(state, action: PayloadAction<boolean>) {
+      state.initialApp = action.payload;
     },
     //меняем имя пользователю
     setUserName(state, action: PayloadAction<string>) {

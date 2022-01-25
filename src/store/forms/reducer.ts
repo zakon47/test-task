@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type IForm = {
-  title: string;
-  url: string;
-  code?: string;
-};
+import { IForm } from "@/modals/forms";
 
 interface InitialState {
   listForm: IForm[];
@@ -26,6 +22,10 @@ const slice = createSlice({
   name: "forms",
   initialState,
   reducers: {
+    //перезаписываем формы
+    setForm(state, action: PayloadAction<IForm[]>) {
+      state.listForm = action.payload;
+    },
     //добавляем форму
     addForm(state, action: PayloadAction<IForm>) {
       state.listForm.push(action.payload);
